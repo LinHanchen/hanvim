@@ -29,8 +29,8 @@ Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'kristijanhusak/defx-icons'
 Plug 'kristijanhusak/defx-git'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
 Plug 'dense-analysis/ale'
 Plug 'sheerun/vim-polyglot'
 Plug 'Yggdroot/indentLine'
@@ -38,6 +38,9 @@ Plug 'Yggdroot/indentLine'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-startify'
+
+" View and search LSP symbols, tags
+Plug 'liuchengxu/vista.vim'
 call plug#end()
 "]]]
 " set 相关[[[1
@@ -288,10 +291,10 @@ vmap <Leader>t <Plug>(coc-translator-pv)
 
 let g:coc_snippet_next = '<c-j>'
 let g:coc_snippet_prev = '<c-k>'
-
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+" 
+" let g:UltiSnipsExpandTrigger="<c-j>"
+" let g:UltiSnipsJumpForwardTrigger="<c-j>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " ALE [[[2
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)

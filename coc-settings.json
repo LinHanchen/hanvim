@@ -3,33 +3,33 @@
     "suggest.minTriggerInputLength": 2,
     "suggest.triggerAfterInsertEnter": true,
     "diagnostic.displayByAle": true,
-    "snippets.ultisnips.directories": [
-        "UltiSnips"
-    ],
 
     "languageserver": {
+
+        //"clangd": {
+        //    "command": "clangd",
+        //    "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".git/"],
+        //    "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"]
+        //}
+        
         "ccls": {
             "command": "ccls",
             "filetypes": ["c", "cpp", "objc", "objcpp"],
-            "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".hg/", "./git"],
+            "rootPatterns": [".ccls", "compile_commands.json", ".git/"],
             "initializationOptions": {
                 "cache" : {
                     "directory": ".ccls-cache"
                 },
-                "client": {
-                    "snippetSupport": true
-                },
                 "clang":{
-                    //"resourceDir": "/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0",
                     "extraArgs":[
-                        //"-isystem", "/Library/Developer/CommandLineTools/usr/include/c++/v1"
                         "-isystem", "/usr/local/include",
                         "-isystem", "/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1",
-                        "-isystem", "/Library/Developer/CommandLineTools/usr/lib/clang/11.0.3/include",
                         "-isystem", "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include",
+                        "-isystem", "/Library/Developer/CommandLineTools/usr/lib/clang/11.0.3/include",
                         "-isystem", "/Library/Developer/CommandLineTools/usr/include",
                         "-isystem", "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
-                    ]
+                    ],
+                    "resourceDir": "/Library/Developer/CommandLineTools/usr/lib/clang/11.0.3"
                 }
             }
         }
