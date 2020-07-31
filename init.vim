@@ -324,6 +324,9 @@ function! s:defx_mappings() abort
     nnoremap <silent><buffer><expr> R defx#async_action('redraw')
 endfunction
 " ]]]
+" Vista.vim [[[2
+nmap <silent> <Leader>l :Vista!!<cr>
+" ]]]
 " ]]]
 " 插件设置[[[1
 " coc.vim[[[2
@@ -350,6 +353,7 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme = "onedark"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#vista#enabled = 0
 " ]]]
 " ALE [[[2
 "let g:ale_sign_error = "✖"
@@ -403,6 +407,27 @@ call defx#custom#column('git', 'indicators', {
 " indentLine [[[2
 "let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_char = '│'
+" ]]]
+" Vista.vim [[[2
+"
+" How each level is indented and what to prepend.
+" This could make the display more compact or more spacious.
+" e.g., more compact: ["▸ ", ""]
+" Note: this option only works the LSP executives, doesn't work for `:Vista ctags`.
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+
+let g:vista_highlight_whole_line = 1
+
+let g:vista_default_executive = 'coc'
+
+" Ensure you have installed some decent font to show these pretty symbols, then you can enable icon for the kind.
+let g:vista#renderer#enable_icon = 1
+
+" The default icons can't be suitable for all the filetypes, you can extend it as you wish.
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
 " ]]]
 " ]]]
 " vim:fdm=marker:fmr=[[[,]]]
