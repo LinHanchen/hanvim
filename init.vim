@@ -24,6 +24,7 @@ Plug 'tomasr/molokai'
 Plug 'altercation/vim-colors-solarized'
 Plug 'icymind/NeoSolarized'
 Plug 'joshdick/onedark.vim'
+Plug 'morhetz/gruvbox'
 
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'kristijanhusak/defx-icons'
@@ -41,6 +42,9 @@ Plug 'mhinz/vim-startify'
 
 " View and search LSP symbols, tags
 Plug 'liuchengxu/vista.vim'
+
+" Async run command
+Plug 'skywind3000/asyncrun.vim'
 call plug#end()
 "]]]
 " set 相关[[[1
@@ -59,6 +63,7 @@ if !has("nvim")
     set nocompatible
 endif
 set number "显示行号
+set relativenumber
 set incsearch "输入搜索命令时，显示目前输入的模式的匹配位置
 set hlsearch "高亮搜索结果
 set ignorecase "搜索忽略大小写
@@ -90,7 +95,7 @@ endif
 
 set shiftround " 缩进取整到 'shiftwidth' 的倍数。应用于 > 和 < 命令。
 "set diffopt+=vertical,context:3,foldcolumn:0 "比较模式的设置选项
-"set fileencodings=ucs-bom,utf-8,gb18030,cp936,latin1 "字符编码列表，开始编辑已存在的文件时，参考此选项
+set fileencodings=ucs-bom,utf-8,gb18030,cp936,latin1 "字符编码列表，开始编辑已存在的文件时，参考此选项
 set fileformats=unix,dos,mac "给出换行符的格式
 set formatoptions=qn2mB1 "描述自动排版如何进行的字母序列，参数见fo-table
 
@@ -173,6 +178,7 @@ endif
 "colorscheme NeoSolarized
 "colorscheme monokai
 colorscheme onedark
+"colorscheme gruvbox
 "let g:rehash256 = 1
 let g:monokai_term_italic = 1
 let g:monokai_gui_italic = 1
@@ -243,7 +249,7 @@ endfunction
 "]]]
 " map 相关[[[1
 " normal setting [[[2
-let mapleader=","
+let mapleader=" "
 " ctrl-s 保存文件
 "nnoremap <silent> <C-s> :update<CR>
 "inoremap <silent> <C-s> <ESC>:update<CR>
@@ -327,6 +333,12 @@ endfunction
 " Vista.vim [[[2
 nmap <silent> <Leader>l :Vista!!<cr>
 " ]]]
+" Asyncrun [[[2
+fun! Asyncrun_cpp()
+    nnoremap <buffer><silent> <F4> :AsyncRun -cwd=<root>/build cmake .. && make <cr>
+endfun
+autocmd FileType cpp,cxx,h,hpp,c :call Asyncrun_cpp()
+" ]]]
 " ]]]
 " 插件设置[[[1
 " coc.vim[[[2
@@ -370,7 +382,7 @@ let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 let g:ale_linters = {
             \ 'go': ['gopls'],
-            \ 'cpp': ['gcc', 'clang'],
+            \ 'cpp': ['ccls', 'clang'],
             \}
 let g:ale_c_parse_compile_commands = 1
 let g:ale_c_build_dir_names = ['Debug','.']
@@ -428,6 +440,10 @@ let g:vista#renderer#icons = {
 \   "function": "\uf794",
 \   "variable": "\uf71b",
 \  }
+" ]]]
+" Asyncrun [[[2
+let g:asyncrun_open = 12
+let g:asyncrun_rootmarks = ['.git', '.ccls', 'compile_commands.json', '.root']
 " ]]]
 " ]]]
 " vim:fdm=marker:fmr=[[[,]]]
