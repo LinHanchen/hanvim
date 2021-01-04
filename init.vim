@@ -368,10 +368,10 @@ let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#vista#enabled = 0
 " ]]]
 " ALE [[[2
-"let g:ale_sign_error = "✖"
-"let g:ale_sign_warning = "⚠"
-let g:ale_sign_error = "❌"
-let g:ale_sign_warning = "⚠️"
+let g:ale_sign_error = "✖"
+let g:ale_sign_warning = "⚠"
+" let g:ale_sign_error = "❌"
+" let g:ale_sign_warning = "⚠️"
 "highlight ALEErrorSign cterm=bold ctermfg=197 gui=bold,italic guifg=#F92772
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
@@ -382,7 +382,7 @@ let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 let g:ale_linters = {
             \ 'go': ['gopls'],
-            \ 'cpp': ['ccls', 'clang'],
+            \ 'cpp': ['ccls', 'gcc'],
             \}
 let g:ale_c_parse_compile_commands = 1
 let g:ale_c_build_dir_names = ['Debug','.']
